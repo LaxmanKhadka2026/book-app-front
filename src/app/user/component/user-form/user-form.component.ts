@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import {Roles} from "../../../const/Role.constant"
 
 
 @Component({
@@ -41,9 +40,6 @@ formInit(){
     name:['',[
       Validators.required
     ]],
-    role:['',[
-      Validators.required
-    ]],
     email:['',[
       Validators.required,
       Validators.email
@@ -75,7 +71,6 @@ this.userForm.reset()
 
 submit(){
 this.submitted = true
-console.log(this.userForm)
 if(this.userForm.invalid && this.formOptions.type!=="update") return
 let value ={...this.userForm.value,mobile:parseInt(this.userForm.value.mobile)}
 if(this.formOptions.type==="update"){
