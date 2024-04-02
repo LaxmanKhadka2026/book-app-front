@@ -74,4 +74,17 @@ getLocalStorage(){
   return obj
   }
 
+
+addToCart(item: any){
+  let cartItem = localStorage.getItem("cart");
+  let itemArray = cartItem ? JSON.parse(cartItem) : [];
+  let ifExist = itemArray.find((data:any) => data.id===item.id );
+  if(ifExist){
+     ifExist.quantity++;
+  } else {
+    itemArray.push({...item,quantity:1})
+  }
+  localStorage.setItem('cart',JSON.stringify(itemArray));
+}
+
 }

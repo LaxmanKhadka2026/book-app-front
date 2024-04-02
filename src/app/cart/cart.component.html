@@ -1,0 +1,28 @@
+<app-navigation></app-navigation>
+<div class="max-w-3xl mx-auto py-8">
+    <h1 class="text-3xl font-bold mb-4">Shopping Cart</h1>
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <ul class="divide-y divide-gray-200">
+        <li class="py-4 flex items-center justify-between" *ngFor="let pro of products">
+          <div class="flex items-center">
+            <img [src]="baseUrl+ 'product/getFile?fileName=' + pro?.image" alt="Product Image" class="w-16 h-16 rounded-md object-cover mr-4">
+            <div>
+              <h3 class="text-lg font-semibold">{{pro?.title}}</h3>
+              <h3 class="text-lg font-semibold">Quantity: {{pro?.quantity}}</h3>
+              <h3 class="text-lg font-semibold">Price: NRP {{pro?.price}}</h3>
+            </div>
+          </div>
+          <div>
+            <span class="text-lg font-semibold">NPR {{pro?.quantity * pro?.price}}</span>
+            <button class="ml-4 text-blue-600 hover:text-blue-800"(click)="addToCart(pro)">Add</button>
+            <button class="ml-4 text-red-600 hover:text-red-800" (click)="deleteFromCart(pro.id)">Remove</button>
+          </div>
+        </li>
+        <!-- Add more cart items here -->
+      </ul>
+      <div class="mt-6 flex flex-col justify-end">
+        <span class="text-lg font-semibold">Total: NPR {{totalPrice}}</span>
+        <button type="button" *ngIf="products.length > 0" (click)="ordered()" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Check Out</button>
+      </div>
+    </div>
+  </div>

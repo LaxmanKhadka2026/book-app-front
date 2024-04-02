@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-our-product',
@@ -10,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class OurProductComponent {
 products:any = [];
 baseUrl:string = environment.url
-  constructor(public apiService: ApiService){}
+  constructor(public apiService: ApiService, public toaster:ToastrService ){}
 
 
   ngOnInit(){
@@ -21,6 +22,11 @@ baseUrl:string = environment.url
     this.apiService.get(`product`).subscribe((data:any)=>{
       this.products = data
     })
+  }
+
+  addToCart(item: any){
+    this.apiService.addToCart(item);
+    this.toaster.success('Successful', "Added to cart!!")
   }
 
 }

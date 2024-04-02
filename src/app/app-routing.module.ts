@@ -11,6 +11,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ItemViewComponent } from './item-view/item-view.component';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { OurProductComponent } from './our-product/our-product.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
 {
@@ -33,6 +34,11 @@ const routes: Routes = [
  {
     path:"view/:id",
     component:ItemViewComponent
+  },
+
+  {
+    path:"cart",
+    component:CartComponent
   },
 {
   path:"dashboard",
